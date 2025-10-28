@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-class run
+class Program
 {
     //test
     public static char[] Name = { 'A', 'B', 'C', 'D' };
