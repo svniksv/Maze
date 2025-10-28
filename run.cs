@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 class run
 {
@@ -209,17 +210,6 @@ class run
             lines.Add(line);
         }
 
-        //var lines = new List<string>()
-        //{
-        //    "#############",
-        //    "#...........#",
-        //    "###B#C#B#D###",
-        //    "  #D#C#B#A#",
-        //    "  #D#B#A#C#",
-        //    "  #A#D#C#A#",
-        //    "  #########"
-        //};
-
         int result = Solve(lines);
         Console.WriteLine(result);
     }
@@ -264,5 +254,32 @@ public class Maze
         for (int i = 0; i < RoomSize; i++)
             if (!(Rooms[0, i] == 'A' && Rooms[1, i] == 'B' && Rooms[2, i] == 'C' && Rooms[3, i] == 'D')) return false;
         return true;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is Maze maze)
+        {
+            for (int i = 0; i < 11; i++)
+                if (Hall[i] != maze.Hall[i]) return false;
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < RoomSize; j++)
+                    if (Rooms[i, j] != maze.Rooms[i, j]) return false;
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+
+        foreach (char room in Rooms) hash.Add(room);
+        foreach (char h in Hall) hash.Add(h);
+        return hash.ToHashCode();
     }
 }
