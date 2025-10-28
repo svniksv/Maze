@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 class run
 {
+    //test
     public static char[] Name = { 'A', 'B', 'C', 'D' };
     public static int[] Enterences = { 2, 4, 6, 8 };
     public static int[] EnergyCost = { 1, 10, 100, 1000 };
@@ -173,7 +174,6 @@ class run
         }
         return list;
     }
-
 
     //проверям заполнена ли целевая комната корректно
     public static bool IsRoomDone(Maze maze, int i)
